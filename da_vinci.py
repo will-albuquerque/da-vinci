@@ -24,6 +24,25 @@ class Point(typing.NamedTuple):
         assert max_x > 0
         assert max_y > 0
         return Point(random.randrange(max_x), random.randrange(max_y))
+    
+class Triangle(typing.NamedTuple):
+    '''A 2D triangle'''
+    a: Point
+    b: Point
+    c: Point
+
+    def random(max_x: int, max_y: int) -> typing.Self:
+        '''
+        Returns a random triangle in the positive quadrant bounded by
+        max_x and max_y
+        '''
+        assert max_x > 0
+        assert max_y > 0
+        return Triangle(
+            Point.random(max_x, max_y),
+            Point.random(max_x, max_y),
+            Point.random(max_x, max_y),
+        )
 
 
 # Parse command line arguments
@@ -41,3 +60,5 @@ try:
         image.load()
 except OSError:
     raise SystemExit(f'Cannot open file: {args.image_path.name}')
+
+print(Triangle.random(100, 100))
