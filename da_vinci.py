@@ -16,6 +16,7 @@ class Point(typing.NamedTuple):
     x: int
     y: int
 
+    @staticmethod
     def random(max_x: int, max_y: int) -> typing.Self:
         '''
         Returns a random point in the positive quadrant bounded by
@@ -31,6 +32,7 @@ class Triangle(typing.NamedTuple):
     b: Point
     c: Point
 
+    @staticmethod
     def random(max_x: int, max_y: int) -> typing.Self:
         '''
         Returns a random triangle in the positive quadrant bounded by
@@ -51,6 +53,7 @@ class RGBA(typing.NamedTuple):
     b: int
     a: int
 
+    @staticmethod
     def random() -> typing.Self:
         '''Returns a random RGBA color'''
         return RGBA(
