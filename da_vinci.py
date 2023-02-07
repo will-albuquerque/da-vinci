@@ -44,6 +44,21 @@ class Triangle(typing.NamedTuple):
             Point.random(max_x, max_y),
         )
 
+class RGBA(typing.NamedTuple):
+    '''A color in RGBA format'''
+    r: int
+    g: int
+    b: int
+    a: int
+
+    def random() -> typing.Self:
+        '''Returns a random RGBA color'''
+        return RGBA(
+            random.randrange(256),
+            random.randrange(256),
+            random.randrange(256),
+            random.randrange(256)
+        )
 
 # Parse command line arguments
 parser = argparse.ArgumentParser()
@@ -60,5 +75,3 @@ try:
         image.load()
 except OSError:
     raise SystemExit(f'Cannot open file: {args.image_path.name}')
-
-print(Triangle.random(100, 100))
